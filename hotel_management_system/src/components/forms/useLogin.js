@@ -1,13 +1,10 @@
 import Axios from "axios";
 import { useState, useEffect } from "react";
 
-const useForm = (callback, validate) => {
+const useLogin = (callback, validate) => {
   const [values, setValues] = useState({
-    username: "",
     email: "",
     password: "",
-    password2: "",
-    number: "",
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -23,13 +20,11 @@ const useForm = (callback, validate) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    setErrors(validate(values));
+    // setErrors(validate(values));
     setIsSubmitting(true);
-    Axios.post("http://localhost:5000/create", {
-      name: values.username,
+    Axios.post("http://localhost:5000/login", {
       password: values.password,
       email: values.email,
-      phonenumber: values.number,
     }).then(() => {
       console.log("success");
     });
@@ -44,4 +39,4 @@ const useForm = (callback, validate) => {
   return { handleChange, handleSubmit, values, errors };
 };
 
-export default useForm;
+export default useLogin;

@@ -15,6 +15,7 @@ import Marketing from "./components/pages/Marketing";
 import Rooms from "./components/pages/Rooms";
 import AboutUs from "./components/pages/AboutUs";
 import Login from "./components/pages/Login";
+import UserDashboard from "./components/dashboards/UserDashboard";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/rooms" element={<Rooms />} />
         <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/userdashboard" element={<UserDashboard />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>

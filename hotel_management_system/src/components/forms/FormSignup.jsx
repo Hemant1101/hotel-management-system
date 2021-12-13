@@ -1,6 +1,7 @@
 import React from "react";
 import validate from "./validateInfo";
 import useForm from "./useForm";
+import { Link } from "react-router-dom";
 // import "./Form.css";
 
 const FormSignup = ({ submitForm }) => {
@@ -55,7 +56,7 @@ const FormSignup = ({ submitForm }) => {
           <label className="form-label">Password</label>
           <input
             className="form-input"
-            type="password"
+            type="text"
             name="password"
             placeholder="Enter your password"
             value={values.password}
@@ -79,7 +80,7 @@ const FormSignup = ({ submitForm }) => {
           Sign up
         </button>
         <span className="form-input-login">
-          Already have an account? Login <a href="#">here</a>
+          Already have an account? Login <Link to="/login">here</Link>
         </span>
       </form>
     </div>
