@@ -41,6 +41,17 @@ const FormSignup = ({ submitForm }) => {
           {errors.email && <p>{errors.email}</p>}
         </div>
         <div className="form-inputs">
+          <label className="form-label">Phone Number</label>
+          <input
+            className="form-input"
+            type="number"
+            name="number"
+            placeholder="Enter your email"
+            value={values.number}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-inputs">
           <label className="form-label">Password</label>
           <input
             className="form-input"

@@ -2,6 +2,7 @@ import React from "react";
 import Hero from "../Hero";
 import RoomsContent from "../RoomsContent";
 import AboutUs from "./AboutUs";
+import Login from "./Login";
 
 function Home() {
   return (
@@ -10,6 +11,7 @@ function Home() {
       <main className="container">
         <AboutUs />
         <RoomsContent />
+        <Login />
       </main>
     </>
   );
