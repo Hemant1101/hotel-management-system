@@ -1,0 +1,14 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: #9b8c73;
+}
+@import "./Home";
+@import "./Hero";
+@import "./Dropdown";
+@import "./Button";
+@import "./Form";
+@import "./Navbar";
+@import "./_rooms.scss";
+@import "./AboutUs";

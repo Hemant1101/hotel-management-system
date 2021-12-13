@@ -1,0 +1,66 @@
+.hero {
+  margin-top: -100px;
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  background: rgb(20, 20, 20);
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  z-index: -1;
+}
+.heroimg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.45;
+}
+.hero .content {
+  position: relative;
+  max-width: 750px;
+  text-align: left;
+  color: #fff;
+  margin: 15% 50px 50px 12%;
+}
+.h1 {
+  font-size: 7rem;
+  padding: 2px 0;
+}
+.h2 {
+  font-size: 4rem;
+  padding: 5px 0;
+}
+.h3 {
+  padding: 5px 0;
+  font-size: 2.325rem;
+}
+.p {
+  font-size: 1.325rem;
+  max-width: 80%;
+  padding: 5px;
+}
+@media screen and (max-width: 960px) {
+  .h1 {
+    font-size: 4.425rem;
+    font-weight: 500;
+  }
+  .h2 {
+    font-size: 2.425rem;
+    padding: 10px 0;
+    font-weight: 500;
+  }
+  .h3 {
+    font-size: 1.625rem;
+    padding: 5px;
+    font-weight: 500;
+  }
+  .p {
+    font-size: 0.925rem;
+  }
+  .hero .content {
+    margin-top: 35%;
+  }
+}

@@ -1,0 +1,50 @@
+.aboutUs {
+  width: 100vw;
+  height: 80vh;
+  background-color: #9b8c73;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.aboutUs .left-content {
+  width: 40vw;
+
+  .h2 {
+    font-size: 3.825rem;
+    font-weight: 600;
+    max-width: 50%;
+  }
+  .p {
+    font-size: 1.235rem;
+    font-weight: 400;
+    max-width: 70%;
+    line-height: 1.625rem;
+  }
+}
+.aboutUs .right-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(43, 39, 36, 0.9);
+  height: 80vh;
+  width: 40vw;
+  max-width: 600px;
+  padding: 7% 0;
+
+  .h4 {
+    font-size: 2.625rem;
+    font-weight: 500;
+  }
+  span {
+    margin: 5px 2px;
+    font-size: 1.325rem;
+  }
+  .btn {
+    font-size: 1.625rem;
+    padding: 8px 16px;
+    width: 150px;
+    height: 60px;
+  }
+}
