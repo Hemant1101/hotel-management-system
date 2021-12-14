@@ -2,7 +2,7 @@ import React from "react";
 
 function UserDashboard() {
   return (
-    <div>
+    <div className="userdashboardpage">
       {/* wrapper */}
       <div class="wrapper">
         {/* search starts */}

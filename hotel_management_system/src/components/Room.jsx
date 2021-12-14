@@ -1,10 +1,22 @@
-import React from "react";
+import { Axios } from "axios";
+import React, { useState, useEffect } from "react";
 import { RoomList } from "./RoomList";
 
 function Room() {
+  const [Rooms, setRooms] = useState({});
+
+  useEffect(() => {
+    getData();
+    async function getData() {
+      const response = await fetch("http://localhost:5000/api/rooms");
+      const data = await response.json();
+      setRooms(data);
+    }
+  }, []);
+
   return (
     <>
-      {RoomList.map((item) => {
+      {Rooms.map((item) => {
         return (
           <div key={item.id} className="room">
             <div className="room-flex-contain">

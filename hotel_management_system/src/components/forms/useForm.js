@@ -25,7 +25,7 @@ const useForm = (callback, validate) => {
 
     setErrors(validate(values));
     setIsSubmitting(true);
-    Axios.post("http://localhost:5000/create", {
+    Axios.post("http://localhost:5000/register", {
       name: values.username,
       password: values.password,
       email: values.email,
