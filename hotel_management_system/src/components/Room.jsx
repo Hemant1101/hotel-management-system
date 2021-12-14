@@ -1,30 +1,32 @@
-import { Axios } from "axios";
 import React, { useState, useEffect } from "react";
-import { RoomList } from "./RoomList";
+// import { RoomList } from "./RoomList";
 
 function Room() {
-  const [Rooms, setRooms] = useState({});
+  const [Roomitems, setRoomitems] = useState([{}]);
 
   useEffect(() => {
     getData();
     async function getData() {
       const response = await fetch("http://localhost:5000/api/rooms");
       const data = await response.json();
-      setRooms(data);
+      console.log(data);
+      console.log(data["message"]);
+      setRoomitems(data["message"]);
     }
   }, []);
 
   return (
     <>
-      {Rooms.map((item) => {
+      {Roomitems.map((item) => {
+        console.log(item);
         return (
-          <div key={item.id} className="room">
+          <div key={item["id"]} className="room">
             <div className="room-flex-contain">
               <div className="img-box">
-                <img src={item.imgPath} alt="" className="room-img" />
+                <img src={item["imgpath"]} alt="" className="room-img" />
               </div>
               <div className="content">
-                <h3 className="h4">{item.type} room</h3>
+                <h3 className="h4">{item["type"]} room</h3>
                 <p className="p">
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                   Dicta veniam necessitatibus quia cum iste! Rem similique harum
@@ -32,14 +34,13 @@ function Room() {
                 </p>
                 <ul className="detail-box">
                   <li>
-                    Room type<span>- </span> {item.type}
+                    Room type<span>- </span> {item["type"]}
                   </li>
                   <li>
-                    No. of available Rooms <span>-</span>{" "}
-                    {item.roomNo.length - item.BookedRooms.length}
+                    No. of available Rooms <span>-</span> {item["availrooms"]}
                   </li>
                   <li>
-                    Price<span>-</span> {item.pricePerDay} Rs. per Day
+                    Price<span>-</span> {item["price"]} Rs. per Day
                   </li>
                 </ul>
               </div>

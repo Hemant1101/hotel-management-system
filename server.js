@@ -3,9 +3,17 @@ const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
 
-app.use(cors());
+const corsOptions = {
+  origin: true,
+  credential: true,
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 
 const db = mysql.createConnection({
   user: "root",
@@ -34,9 +42,11 @@ const db = mysql.createConnection({
 //     }
 //   );
 // });
+
 app.get("/", (req, res) => {
   res.send("<h1>hello</h1>");
 });
+
 app.post("/register", (req, res) => {
   try {
     const { name, email, password, phonenumber } = req.body;
@@ -63,8 +73,27 @@ app.post("/register", (req, res) => {
   }
 });
 
-// app.get("/api/rooms", (req, res) => {
-//   db.query("SELECT * FROM roomlist", (err, result) => {
-//     return result;
-//   });
-// });
+app.get("/api/rooms", (req, res) => {
+  try {
+    db.query("SELECT * FROM roomlist", (err, result) => {
+      console.log(result[0]["id"]);
+      res.status(200);
+      return res.status(200).json({ staus: 200, message: result });
+    });
+  } catch (error) {
+    return res.status(500).json({
+      staus: 500,
+      message: [
+        {
+          id: 1,
+          type: "server error",
+          price: "####",
+          totalrooms: 0,
+          availrooms: 0,
+          imgpath:
+            "https://media-cdn.tripadvisor.com/media/photo-s/13/d8/ea/1b/a-room-at-the-beach.jpg",
+        },
+      ],
+    });
+  }
+});
