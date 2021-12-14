@@ -18,3 +18,19 @@
   color: #fff;
   background-color: #c2134e;
 }
+.loginsucceswrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .logibtnlink {
+    width: 200px;
+    height: 60px;
+  }
+  .btn {
+    font-size: 1.125rem;
+    width: 150px;
+    height: 60px;
+  }
+}

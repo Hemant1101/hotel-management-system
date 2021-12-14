@@ -1,12 +1,13 @@
 import React from "react";
 import useLogin from "./useLogin";
 import { Link } from "react-router-dom";
+import validateInfo from "./validateInfo";
 // import "./Form.css";
 
 const LoginForm = ({ submitForm }) => {
   const { handleChange, handleSubmit, values, errors } = useLogin(
-    submitForm
-    // validate
+    submitForm,
+    validateInfo
   );
 
   return (
@@ -24,7 +25,7 @@ const LoginForm = ({ submitForm }) => {
           />
         </div>
         <div className="form-inputs">
-          <label className="form-label">Confirm Password</label>
+          <label className="form-label">Enter Your Password</label>
           <input
             className="form-input"
             type="password"

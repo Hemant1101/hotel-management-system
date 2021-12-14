@@ -73,6 +73,31 @@ app.post("/register", (req, res) => {
   }
 });
 
+app.post("/login", (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+
+  db.query(
+    "SELECT * FROM users WHERE email = ? AND password = ?",
+    [email, password],
+    (err, result) => {
+      console.log("login used");
+      if (err) {
+        res.send({ err: err });
+        console.log(err);
+      } else {
+        if (result.length > 0) {
+          console.log(result);
+          res.send(result);
+        } else {
+          console.log("message");
+          res.send({ message: "Wrong email/password" });
+        }
+      }
+    }
+  );
+});
+
 app.get("/api/rooms", (req, res) => {
   try {
     db.query("SELECT * FROM roomlist", (err, result) => {

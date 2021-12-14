@@ -7,7 +7,7 @@ const useLogin = (callback, validate) => {
     password: "",
   });
   const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isLogging, setIsLogging] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,20 +21,28 @@ const useLogin = (callback, validate) => {
     e.preventDefault();
 
     // setErrors(validate(values));
-    setIsSubmitting(true);
+    setIsLogging(true);
     Axios.post("http://localhost:5000/login", {
       password: values.password,
       email: values.email,
-    }).then(() => {
-      console.log("success");
-    });
+    })
+      .then((res) => {
+        console.log(res);
+        console.log("success");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   useEffect(() => {
-    if (Object.keys(errors).length === 0 && isSubmitting) {
+    if (Object.keys(errors).length === 0 && isLogging) {
+      console.log("callback");
       callback();
+    } else {
+      console.log("notcallback");
     }
-  }, [errors]);
+  }, []);
 
   return { handleChange, handleSubmit, values, errors };
 };

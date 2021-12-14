@@ -2,13 +2,15 @@ import React, { useState } from "react";
 // import "./Form.css";
 import LoginForm from "../forms/LoginForm";
 import FormSuccess from "../forms/FormSuccess";
-
+import ViewDashboard from "../ViewDashboard";
 const Login = () => {
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoggedin, setIsLoggedin] = useState(false);
 
-  function submitForm() {
-    setIsSubmitted(true);
-  }
+  const submitloginform = () => {
+    // if
+    console.log("setlogi true");
+    setIsLoggedin(true);
+  };
   return (
     <>
       <div className="form-page">
@@ -20,10 +22,10 @@ const Login = () => {
               alt="spaceship"
             />
           </div>
-          {!isSubmitted ? (
-            <LoginForm submitForm={submitForm} />
+          {!isLoggedin ? (
+            <LoginForm submitForm={submitloginform} />
           ) : (
-            <FormSuccess />
+            <ViewDashboard />
           )}
         </div>
       </div>
