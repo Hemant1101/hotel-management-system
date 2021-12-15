@@ -27,18 +27,30 @@ const useLogin = (callback, validate) => {
       email: values.email,
     })
       .then((res) => {
+        const results = res.data;
+        console.log(res.data);
+        if (
+          results[0]["email"] === values.email &&
+          results[0]["password"] === values.password
+        ) {
+          callback();
+        } else {
+          alert("wrong email/password");
+        }
+
         console.log(res);
         console.log("success");
       })
       .catch((err) => {
         console.log(err);
+        alert("wrong email/password");
       });
   };
 
   useEffect(() => {
     if (Object.keys(errors).length === 0 && isLogging) {
       console.log("callback");
-      callback();
+      // callback();
     } else {
       console.log("notcallback");
     }

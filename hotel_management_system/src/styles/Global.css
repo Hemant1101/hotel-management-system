@@ -873,7 +873,7 @@ body {
 }
 
 .userdashboardpage .wrapper {
-  background-color: #4c5862;
+  background-color: #614921;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 256px calc(100% - 256px);
@@ -884,6 +884,7 @@ body {
   min-height: 100vh;
   width: 100%;
       grid-template-areas: "sidebar search " "sidebar main";
+  color: #109cf1;
 }
 
 .userdashboardpage .search {
@@ -898,7 +899,7 @@ body {
   -ms-grid-row-span: 2;
   -ms-grid-column: 1;
   grid-area: sidebar;
-  height: 100vh;
+  height: 100%;
   -webkit-box-shadow: 6px 0 18px rgba(0, 0, 0, 0.06);
           box-shadow: 6px 0 18px rgba(0, 0, 0, 0.06);
 }
@@ -1420,6 +1421,11 @@ body {
 
 .userdashboardpage li {
   list-style: none;
+}
+
+.userdashboardpage .navbar {
+  margin-top: 50px;
+  height: 100%;
 }
 
 .userdashboardpage .nav-item {

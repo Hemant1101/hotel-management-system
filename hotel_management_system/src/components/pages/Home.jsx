@@ -11,7 +11,7 @@ function Home() {
       <main className="container">
         <AboutUs />
         <RoomsContent />
-        <Login />
+        {/* <Login /> */}
       </main>
     </>
   );

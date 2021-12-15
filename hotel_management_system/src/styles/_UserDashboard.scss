@@ -23,7 +23,7 @@
 
   /* grid */
   .wrapper {
-    background-color: #4c5862;
+    background-color: #614921;
     display: grid;
     grid-template-columns: 256px calc(100% - 256px);
     grid-template-rows: 60px calc(100% - 60px);
@@ -33,6 +33,7 @@
     grid-template-areas:
       "sidebar search "
       "sidebar main";
+    color: #109cf1;
   }
   .search {
     grid-area: search;
@@ -40,7 +41,7 @@
   }
   .sidebar {
     grid-area: sidebar;
-    height: 100vh;
+    height: 100%;
     box-shadow: 6px 0 18px rgba(0, 0, 0, 0.06);
   }
 
@@ -389,6 +390,11 @@
   }
   li {
     list-style: none;
+  }
+
+  .navbar {
+    margin-top: 50px;
+    height: 100%;
   }
   .nav-item {
     margin-bottom: 20px;

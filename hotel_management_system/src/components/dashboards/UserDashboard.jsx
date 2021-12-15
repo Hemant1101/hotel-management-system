@@ -6,7 +6,7 @@ function UserDashboard() {
       {/* wrapper */}
       <div class="wrapper">
         {/* search starts */}
-        <div class="search">
+        {/* <div class="search">
           <form class="search-form d-flex">
             <label>
               <button type="submit" class="searchButton">
@@ -36,7 +36,7 @@ function UserDashboard() {
               <circle cx="17" cy="6" r="4.5" fill="#F7685B" stroke="white" />
             </svg>
           </form>
-        </div>
+        </div> */}
         {/* search ends */}
 
         {/* sidebar starts */}
@@ -82,9 +82,9 @@ function UserDashboard() {
                     </div>
                   </a>
                 </li>
-                <li class="nav-item">
+                {/* <li class="nav-item">
                   <a href="">
-                    <div class="menu-icon">
+                    {/* <div class="menu-icon">
                       <svg
                         width="20"
                         height="20"
@@ -100,10 +100,10 @@ function UserDashboard() {
                       </svg>
 
                       <span class="nav-label">Tasks</span>
-                    </div>
-                  </a>
-                </li>
-                <li class="nav-item">
+                    </div> */}
+                {/* </a>
+                </li> */}
+                {/* <li class="nav-item">
                   <a href="">
                     <div class="menu-icon">
                       <svg
@@ -128,7 +128,7 @@ function UserDashboard() {
                       <span class="nav-label">Email</span>
                     </div>
                   </a>
-                </li>
+                </li> */}
                 <li class="nav-item">
                   <a href="">
                     <div class="menu-icon">
@@ -263,7 +263,7 @@ function UserDashboard() {
                 </div>
 
                 {/* calendar */}
-                <div class="calendar">
+                {/* <div class="calendar">
                   <h3>23 December, Sunday</h3>
                   <div class="week d-flex">
                     <div class="dayblock">
@@ -295,7 +295,7 @@ function UserDashboard() {
                       <p class="dayN">29</p>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 {/* calendar ends */}
               </div>
               {/* taskhead ends */}
@@ -303,7 +303,7 @@ function UserDashboard() {
               {/* task-block */}
               <div class="task-block">
                 {/* task-card 1*/}
-                <div class="task-card">
+                {/* <div class="task-card">
                   <div class="task-header">
                     <h3>Send benefit review by Sunday</h3>
                     <p class="task-type">Reminder</p>
@@ -354,9 +354,7 @@ function UserDashboard() {
                     <p class="task-status complete">Completed</p>
                   </div>
                 </div>
-                {/* task card 1 ends*/}
-
-                {/* task card 2 */}
+                
                 <div class="task-card">
                   <div class="task-header">
                     <h3>Invite to office meet-up</h3>
@@ -405,11 +403,11 @@ function UserDashboard() {
                     </div>
                     <p class="task-status ended">Ended</p>
                   </div>
-                </div>
+                </div> */}
                 {/* task card 2 ends*/}
 
                 {/* task card 3 */}
-                <div class="task-card">
+                {/* <div class="task-card">
                   <div class="task-header">
                     <h3>Office meet-up</h3>
                     <p class="task-type">Event</p>
@@ -457,7 +455,7 @@ function UserDashboard() {
                     </div>
                     <p class="task-status complete">Completed</p>
                   </div>
-                </div>
+                </div> */}
                 {/* task card 3 ends*/}
 
                 <div class="show-more">
@@ -483,7 +481,7 @@ function UserDashboard() {
               </div>
               {/* deals image block */}
               <div class="deals-graph">
-                <p class="graphtag">
+                {/* <p class="graphtag">
                   <svg
                     width="8"
                     height="8"
@@ -500,17 +498,17 @@ function UserDashboard() {
                     />
                   </svg>
                   Closed deals
-                </p>
-                <div class="graph">
+                </p> */}
+                {/* <div class="graph">
                   <img
                     class="img-graph"
                     src="https://raw.githubusercontent.com/ShoshaTheTarnegolet/Dashboard-Project/80ca03eb6004ebaf7f2bb13122e677d4c0449aa5/img/deals_graphic.svg"
                     alt=""
                   />
-                </div>
+                </div> */}
               </div>
             </div>
-            {/* deals block ends*/}
+            {/* deals block ends */}
 
             {/* task-graph block */}
             <div class="task">
@@ -520,8 +518,8 @@ function UserDashboard() {
                   Show: <span class="viewChose">This month</span>
                 </p>
               </div>
-              {/* panelHeader */}
-              <div class="task-graph">
+
+              {/*<div class="task-graph">
                 <img
                   class="img-graph"
                   src="https://raw.githubusercontent.com/ShoshaTheTarnegolet/Dashboard-Project/80ca03eb6004ebaf7f2bb13122e677d4c0449aa5/img/circle.svg"
@@ -583,7 +581,7 @@ function UserDashboard() {
                     <p>Ended</p>
                   </div>
                 </div>
-              </div>
+              </div>*/}
             </div>
             {/* task-graph block ends*/}
           </div>
