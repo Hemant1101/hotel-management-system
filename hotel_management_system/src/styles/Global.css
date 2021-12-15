@@ -830,6 +830,27 @@ body {
   height: 60px;
 }
 
+.tempuserdash {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: "Lato";
+  color: #fff;
+}
+
+.tempuserdash h1 {
+  font-size: 2.625rem;
+  margin-top: 100px;
+}
+
 .userdashboardpage {
   /* grid */
   /* inside main */
