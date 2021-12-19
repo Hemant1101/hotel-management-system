@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Button } from "./utilities/Button";
 import { Link } from "react-router-dom";
 // import "./Navbar.css";
-import Dropdown from "./utilities/Dropdown";
 
 function Navbar() {
+  const [userloggedin, setUserloggedin] = useState(false);
   const [click, setClick] = useState(false);
   const [dropdown, setDropdown] = useState(false);
   const [fixed, setFixed] = useState(false);
@@ -31,6 +31,12 @@ function Navbar() {
     window.addEventListener("scroll", () => {
       setFixed(window.scrollY > 90);
     });
+    let locstorvar = localStorage.getItem("login");
+    if (locstorvar) {
+      setUserloggedin(true);
+    } else {
+      setUserloggedin(false);
+    }
   }, []);
 
   return (

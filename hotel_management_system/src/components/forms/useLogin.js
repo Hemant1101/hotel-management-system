@@ -34,12 +34,10 @@ const useLogin = (callback, validate) => {
           results[0]["password"] === values.password
         ) {
           callback();
+          localStorage.setItem("login", true);
         } else {
           alert("wrong email/password");
         }
-
-        console.log(res);
-        console.log("success");
       })
       .catch((err) => {
         console.log(err);
