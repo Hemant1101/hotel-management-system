@@ -10,8 +10,8 @@ function Room() {
       const response = await fetch("http://localhost:5000/api/rooms");
       const data = await response.json();
       console.log(data);
-      console.log(data["message"]);
-      setRoomitems(data["message"]);
+      console.log(data["rooms"]);
+      setRoomitems(data["rooms"]);
     }
   }, []);
 
