@@ -41,7 +41,7 @@ const getrooms = async (req, res) => {
   try {
     const rooms = await Rooms.findAll();
     // db.query("SELECT * FROM roomlist", (err, result) => {});
-    console.log(rooms);
+    // console.log(rooms);
     res.status(200);
     return res.status(200).json({ rooms: rooms });
   } catch (error) {

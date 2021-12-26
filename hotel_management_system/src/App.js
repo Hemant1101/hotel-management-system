@@ -13,22 +13,22 @@ import SignUp from "./components/pages/SignUp";
 import Home from "./components/pages/Home";
 import Marketing from "./components/pages/Marketing";
 import Rooms from "./components/pages/Rooms";
-import AboutUs from "./components/pages/AboutUs";
-import Login from "./components/pages/Login";
+import About from "./components/pages/About";
 import UserDashboard from "./components/dashboards/UserDashboard";
+import LoginPage from "./components/pages/LoginPage";
 
 function App() {
   return (
     <Router>
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
         <Route path="/marketing" element={<Marketing />} />
         <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/rooms" element={<Rooms />} />
-        <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/aboutus" element={<About />} />
         <Route path="/userdashboard" element={<UserDashboard />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

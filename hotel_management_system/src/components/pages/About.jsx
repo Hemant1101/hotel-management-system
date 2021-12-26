@@ -1,16 +1,16 @@
 import React from "react";
-import Form from "../forms/Form";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
+import AboutUs from "./AboutUs";
 
-function SignUp() {
+function About() {
   return (
     <>
       <Navbar />
-      <Form />
+      <AboutUs />
       <Footer />
     </>
   );
 }
 
-export default SignUp;
+export default About;
