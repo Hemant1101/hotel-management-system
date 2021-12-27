@@ -7,6 +7,7 @@ const options = {
   resources: [User, Rooms],
   branding: {
     companyName: "Hotel Management System Admin",
+    softwareBrother: false,
   },
 };
 
