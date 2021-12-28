@@ -1,21 +1,34 @@
-import React, { useState } from "react";
+import Axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 function UserDashboard() {
   const [sidebar, setsidebar] = useState(false);
   const [closeBtn, setcloseBtn] = useState(false);
-  // let searchBtn = document.querySelector(".bx-search");
+  const [userid, setuserid] = useState("");
+  const [username, setusername] = useState("");
+  const [useremail, setuseremail] = useState("");
+  async function getdata() {
+    const usid = Number(localStorage.getItem("login"));
+    console.log(typeof usid);
+    setuserid(usid);
+    Axios.get("http://localhost:5000/api/getuserdata", {
+      params: {
+        searchid: usid,
+      },
+    }).then((res) => {
+      const result = res.data;
+      console.log(result);
+      const usemail = result["user"]["email"];
+      const usname = result["user"]["name"];
+      setuseremail(usemail);
+      setusername(usname);
+    });
+  }
 
-  // closeBtn.addEventListener("click", () => {
-  //   sidebar.classList.toggle("open");
-  //   menuBtnChange(); //calling the function(optional)
-  // });
-
-  // searchBtn.addEventListener("click", () => {
-  //   // Sidebar open when you click on the search iocn
-  //   sidebar.classList.toggle("open");
-  //   menuBtnChange(); //calling the function(optional)
-  // });
+  useEffect(() => {
+    getdata();
+  }, []);
 
   // following are the code to change sidebar button(optional)
   function menuBtnChange() {
@@ -28,17 +41,14 @@ function UserDashboard() {
   }
   return (
     <>
-      {/* <div className="tempuserdash">
-        <h1>User Dashbord</h1>
-      </div> */}
       <div className="userdashboardpage">
         <div
           className={sidebar ? "sidebar open" : "sidebar"}
           onClick={menuBtnChange}
         >
           <div className="logo-details">
-            <i className="bx bxl-c-plus-plus icon"></i>
-            <div className="logo_name">CodingLab</div>
+            <i className="bx bxs-dashboard icon"></i>
+            <div className="logo_name">Actions</div>
             <i
               className={closeBtn ? "bx bx-menu-alt-right" : "bx bx-menu"}
               id="btn"
@@ -46,12 +56,7 @@ function UserDashboard() {
           </div>
           <ul className="nav-list">
             <li>
-              <i className="bx bx-search"></i>
-              <input type="text" placeholder="Search..." />
-              <span className="tooltip">Search</span>
-            </li>
-            <li>
-              <a href="#">
+              <a href="#" onClick={getdata}>
                 <i className="bx bx-grid-alt"></i>
                 <span className="links_name">Dashboard</span>
               </a>
@@ -108,10 +113,11 @@ function UserDashboard() {
             </li>
             <li className="profile">
               <div className="profile-details">
-                <img src="profile.jpg" alt="profileImg" />
+                {/* <img src="profile.jpg" alt="profileImg" /> */}
+                <i className="bx bxs-user-circle icon"></i>
                 <div className="name_job">
-                  <div className="name">Prem Shahi</div>
-                  <div className="job">Web designer</div>
+                  <div className="name">{username}</div>
+                  <div className="job">{useremail}</div>
                 </div>
               </div>
               <i className="bx bx-log-out" id="log_out"></i>
@@ -124,48 +130,9 @@ function UserDashboard() {
             Back
           </Link>
         </section>
-        <h1 style={{ color: "#000000" }}>hii</h1>
       </div>
     </>
   );
 }
 
 export default UserDashboard;
-
-{
-  /* // <!DOCTYPE html>
-// <!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
-// <html lang="en" dir="ltr">
-//   <head>
-//     <meta charset="UTF-8">
-//     <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
-//     <link rel="stylesheet" href="style.css">
-//     <!-- Boxicons CDN Link -->
-//     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-//      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-//    </head> */
-  /* <script>
-  let sidebar = document.querySelector(".sidebar");
-  let closeBtn = document.querySelector("#btn");
-  let searchBtn = document.querySelector(".bx-search");
-
-  closeBtn.addEventListener("click", ()=>{
-    sidebar.classList.toggle("open");
-    menuBtnChange();//calling the function(optional)
-  });
-
-  searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
-    sidebar.classList.toggle("open");
-    menuBtnChange(); //calling the function(optional)
-  });
-
-  // following are the code to change sidebar button(optional)
-  function menuBtnChange() {
-   if(sidebar.classList.contains("open")){
-     closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns className
-   }else {
-     closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns className
-   }
-  }
-</script> */
-}

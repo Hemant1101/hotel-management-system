@@ -7,7 +7,18 @@ const options = {
   resources: [User, Rooms],
   branding: {
     companyName: "Hotel Management System Admin",
-    softwareBrother: false,
+    softwareBrothers: false,
+    logo: "",
+  },
+  locale: {
+    translations: {
+      messages: {
+        loginWelcome: "Administration Panel - Login", // the smaller text
+      },
+      labels: {
+        loginWelcome: "Hotel Management System", // this could be your project name
+      },
+    },
   },
 };
 

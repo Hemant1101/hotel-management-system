@@ -61,4 +61,17 @@ const getrooms = async (req, res) => {
   }
 };
 
-module.exports = { register, login, getrooms };
+const getuserdata = async (req, res) => {
+  try {
+    const usid = req.query.searchid;
+    // console.log(req.query.searchid);
+    const usersdata = await User.findOne({ where: { id: usid } });
+    res.status(200);
+    // console.log(usersdata);
+    return res.status(200).json({ user: usersdata });
+  } catch (error) {
+    return res.status(500).json({ message: "userdata not found" });
+  }
+};
+
+module.exports = { register, login, getrooms, getuserdata };

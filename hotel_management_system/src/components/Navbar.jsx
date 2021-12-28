@@ -3,7 +3,7 @@ import { Button } from "./utilities/Button";
 import { Link } from "react-router-dom";
 // import "./Navbar.css";
 
-function Navbar() {
+function Navbar(props) {
   const [userloggedin, setUserloggedin] = useState(false);
   const [click, setClick] = useState(false);
   const [dropdown, setDropdown] = useState(false);
@@ -11,32 +11,30 @@ function Navbar() {
 
   const handleClick = () => setClick(!click);
   const closemobilemenu = () => setClick(false);
-
-  const onMouseEnter = () => {
-    if (window.innerWidth < 960) {
-      setDropdown(false);
-    } else {
-      setDropdown(true);
-    }
+  const logout = () => {
+    localStorage.clear("login");
+    console.log("clear");
+    props.setLogValue();
   };
+  // const onMouseEnter = () => {
+  //   if (window.innerWidth < 960) {
+  //     setDropdown(false);
+  //   } else {
+  //     setDropdown(true);
+  //   }
+  // };
 
-  const onMouseLeave = () => {
-    if (window.innerWidth < 960) {
-      setDropdown(false);
-    } else {
-      setDropdown(false);
-    }
-  };
+  // const onMouseLeave = () => {
+  //   if (window.innerWidth < 960) {
+  //     setDropdown(false);
+  //   } else {
+  //     setDropdown(false);
+  //   }
+  // };
   useEffect(() => {
     window.addEventListener("scroll", () => {
       setFixed(window.scrollY > 90);
     });
-    let locstorvar = localStorage.getItem("login");
-    if (locstorvar) {
-      setUserloggedin(true);
-    } else {
-      setUserloggedin(false);
-    }
   }, []);
 
   return (
@@ -102,8 +100,21 @@ function Navbar() {
             </Link>
           </li>
         </ul>
-        <Button clname="btn" txtContent="Login" routepath="/login" />
-        <Button clname="btn" txtContent="Sign Up" routepath="/sign-up" />
+        {!props.loggedIn ? (
+          <>
+            <Button clname="btn" txtContent="Login" routepath="/login" />
+            <Button clname="btn" txtContent="Sign Up" routepath="/sign-up" />
+          </>
+        ) : (
+          <>
+            <a href="/userdashboard">
+              <i className="fa fa-user"></i>
+            </a>
+            <button className="btn" onClick={logout}>
+              Log out
+            </button>
+          </>
+        )}
       </nav>
     </>
   );
