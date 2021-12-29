@@ -1,6 +1,8 @@
 import Axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
+import UserProfileCard from "./UserProfileCard";
+import PaymentPage from "./PaymentPage";
 
 function UserDashboard() {
   const [sidebar, setsidebar] = useState(false);
@@ -10,7 +12,6 @@ function UserDashboard() {
   const [useremail, setuseremail] = useState("");
   async function getdata() {
     const usid = Number(localStorage.getItem("login"));
-    console.log(typeof usid);
     setuserid(usid);
     Axios.get("http://localhost:5000/api/getuserdata", {
       params: {
@@ -18,7 +19,7 @@ function UserDashboard() {
       },
     }).then((res) => {
       const result = res.data;
-      console.log(result);
+      // console.log(result);
       const usemail = result["user"]["email"];
       const usname = result["user"]["name"];
       setuseremail(usemail);
@@ -91,10 +92,10 @@ function UserDashboard() {
               <span className="tooltip">Files</span>
             </li>
             <li>
-              <a href="#">
+              <Link to="./makepayment">
                 <i className="bx bx-cart-alt"></i>
                 <span className="links_name">Order</span>
-              </a>
+              </Link>
               <span className="tooltip">Order</span>
             </li>
             <li>
@@ -129,6 +130,12 @@ function UserDashboard() {
           <Link to="/" className="btn-dash">
             Back
           </Link>
+          <div className="dashboard-canvas">
+            <Routes>
+              <Route path="/makepayment" element={<PaymentPage />} />
+              <Route path="/" element={<UserProfileCard />} />
+            </Routes>
+          </div>
         </section>
       </div>
     </>
