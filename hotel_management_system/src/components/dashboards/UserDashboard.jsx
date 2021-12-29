@@ -5,6 +5,7 @@ import UserProfileCard from "./UserProfileCard";
 import PaymentPage from "./PaymentPage";
 
 function UserDashboard() {
+  const [userdata, setuserdata] = useState({});
   const [sidebar, setsidebar] = useState(false);
   const [closeBtn, setcloseBtn] = useState(false);
   const [userid, setuserid] = useState("");
@@ -24,6 +25,7 @@ function UserDashboard() {
       const usname = result["user"]["name"];
       setuseremail(usemail);
       setusername(usname);
+      setuserdata(result["user"]);
     });
   }
 
@@ -57,10 +59,10 @@ function UserDashboard() {
           </div>
           <ul className="nav-list">
             <li>
-              <a href="#" onClick={getdata}>
+              <Link to="./" onClick={getdata}>
                 <i className="bx bx-grid-alt"></i>
                 <span className="links_name">Dashboard</span>
-              </a>
+              </Link>
               <span className="tooltip">Dashboard</span>
             </li>
             <li>
@@ -133,7 +135,10 @@ function UserDashboard() {
           <div className="dashboard-canvas">
             <Routes>
               <Route path="/makepayment" element={<PaymentPage />} />
-              <Route path="/" element={<UserProfileCard />} />
+              <Route
+                path="/"
+                element={<UserProfileCard userdetails={userdata} />}
+              />
             </Routes>
           </div>
         </section>

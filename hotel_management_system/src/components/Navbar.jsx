@@ -3,7 +3,7 @@ import { Button } from "./utilities/Button";
 import { Link } from "react-router-dom";
 // import "./Navbar.css";
 
-function Navbar(props) {
+const Navbar = React.memo((props) => {
   const [userloggedin, setUserloggedin] = useState(false);
   const [click, setClick] = useState(false);
   const [dropdown, setDropdown] = useState(false);
@@ -81,24 +81,32 @@ function Navbar(props) {
             </Link>
             {dropdown && <Dropdown />}
           </li> */}
-          <li className="nav-item nav-mobile">
-            <Link
-              to="/sign-up"
-              className="nav-links-mobile"
-              onClick={closemobilemenu}
-            >
-              Sign Up
-            </Link>
-          </li>
-          <li className="nav-item nav-mobile">
-            <Link
-              to="/login"
-              className="nav-links-mobile"
-              onClick={closemobilemenu}
-            >
-              Login
-            </Link>
-          </li>
+          {!props.loggedIn ? (
+            <>
+              <li className="nav-item nav-mobile">
+                <Link
+                  to="/sign-up"
+                  className="nav-links-mobile"
+                  onClick={closemobilemenu}
+                >
+                  Sign Up
+                </Link>
+              </li>
+              <li className="nav-item nav-mobile">
+                <Link
+                  to="/login"
+                  className="nav-links-mobile"
+                  onClick={closemobilemenu}
+                >
+                  Login
+                </Link>
+              </li>
+            </>
+          ) : (
+            <button className="nav-links-mobile" onClick={logout}>
+              Log out
+            </button>
+          )}
         </ul>
         {!props.loggedIn ? (
           <>
@@ -107,8 +115,8 @@ function Navbar(props) {
           </>
         ) : (
           <>
-            <a href="/userdashboard">
-              <i className="fa fa-user"></i>
+            <a href="/userdashboard" className="dashboard-icon">
+              <i className="fa fa-user user-icon"></i>
             </a>
             <button className="btn" onClick={logout}>
               Log out
@@ -118,6 +126,6 @@ function Navbar(props) {
       </nav>
     </>
   );
-}
+});
 
 export default Navbar;

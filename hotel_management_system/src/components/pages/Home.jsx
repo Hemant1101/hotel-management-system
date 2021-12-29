@@ -10,10 +10,11 @@ function Home() {
   const [loggedIn, setLoggedIn] = useState(false);
   useEffect(() => {
     let data = localStorage.getItem("login");
-    console.log(data);
-    setLoggedIn(data !== undefined);
+    // console.log(data);
+    setLoggedIn(data !== null);
   }, []);
   const loggedout = () => {
+    localStorage.clear("login");
     setLoggedIn(false);
   };
   return (
@@ -23,7 +24,6 @@ function Home() {
       <main className="container">
         <AboutUs />
         <RoomsContent />
-        <Login />
       </main>
       <Footer />
     </>

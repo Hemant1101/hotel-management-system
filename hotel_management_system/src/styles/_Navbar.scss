@@ -88,6 +88,13 @@
 .menu-icon {
   display: none;
 }
+.user-icon {
+  font-size: 25px;
+}
+.dashboard-icon {
+  color: #fff;
+  width: 100px;
+}
 
 @media screen and (max-width: 960px) {
   .fas-caret-down {
@@ -172,6 +179,14 @@
     background: #fff;
     color: #1888ff;
     transition: 250ms;
+  }
+
+  .dashboard-icon {
+    position: fixed;
+    top: 29px;
+    right: 80px;
+    text-decoration: none;
+    color: #fff;
   }
 
   button {
