@@ -1,10 +1,12 @@
 import Axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import UserProfileCard from "./UserProfileCard";
 import PaymentPage from "./PaymentPage";
+import MakeBookings from "./MakeBookings";
 
 function UserDashboard() {
+  let history = useNavigate();
   const [userdata, setuserdata] = useState({});
   const [sidebar, setsidebar] = useState(false);
   const [closeBtn, setcloseBtn] = useState(false);
@@ -45,11 +47,8 @@ function UserDashboard() {
   return (
     <>
       <div className="userdashboardpage">
-        <div
-          className={sidebar ? "sidebar open" : "sidebar"}
-          onClick={menuBtnChange}
-        >
-          <div className="logo-details">
+        <div className={sidebar ? "sidebar open" : "sidebar"}>
+          <div className="logo-details" onClick={menuBtnChange}>
             <i className="bx bxs-dashboard icon"></i>
             <div className="logo_name">Actions</div>
             <i
@@ -59,13 +58,19 @@ function UserDashboard() {
           </div>
           <ul className="nav-list">
             <li>
-              <Link to="./" onClick={getdata}>
+              <Link
+                to="./"
+                onClick={() => {
+                  setsidebar(false);
+                  getdata();
+                }}
+              >
                 <i className="bx bx-grid-alt"></i>
                 <span className="links_name">Dashboard</span>
               </Link>
               <span className="tooltip">Dashboard</span>
             </li>
-            <li>
+            {/* <li>
               <a href="#">
                 <i className="bx bx-user"></i>
                 <span className="links_name">User</span>
@@ -79,7 +84,7 @@ function UserDashboard() {
               </a>
               <span className="tooltip">Messages</span>
             </li>
-            <li>
+             <li>
               <a href="#">
                 <i className="bx bx-pie-chart-alt-2"></i>
                 <span className="links_name">Analytics</span>
@@ -92,13 +97,18 @@ function UserDashboard() {
                 <span className="links_name">File Manager</span>
               </a>
               <span className="tooltip">Files</span>
-            </li>
+            </li> */}
             <li>
-              <Link to="./makepayment">
+              <Link
+                to="./makebookings"
+                onClick={() => {
+                  setsidebar(false);
+                }}
+              >
                 <i className="bx bx-cart-alt"></i>
-                <span className="links_name">Order</span>
+                <span className="links_name">Bookings</span>
               </Link>
-              <span className="tooltip">Order</span>
+              <span className="tooltip">Bookings</span>
             </li>
             <li>
               <a href="#">
@@ -123,18 +133,25 @@ function UserDashboard() {
                   <div className="job">{useremail}</div>
                 </div>
               </div>
-              <i className="bx bx-log-out" id="log_out"></i>
+              <i
+                className="bx bx-log-out"
+                id="log_out"
+                onClick={() => {
+                  setsidebar(false);
+                }}
+              ></i>
             </li>
           </ul>
         </div>
         <section className="home-section">
           <div className="text">Dashboard</div>
-          <Link to="/" className="btn-dash">
+          <button onClick={() => history(-1)} className="btn-dash">
             Back
-          </Link>
+          </button>
           <div className="dashboard-canvas">
             <Routes>
               <Route path="/makepayment" element={<PaymentPage />} />
+              <Route path="/makebookings" element={<MakeBookings />} />
               <Route
                 path="/"
                 element={<UserProfileCard userdetails={userdata} />}

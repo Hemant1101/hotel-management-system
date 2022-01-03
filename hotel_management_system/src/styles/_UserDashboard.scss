@@ -248,13 +248,14 @@
   }
   .btn-dash {
     outline: none;
-    text-decoration: none;
     font-size: 16px;
     border: 3px solid #11101d;
-    padding: 5px 8px;
-    width: 50px;
-    height: 30px;
+    padding: 4px 8px;
+    width: 60px;
+    height: 35px;
     color: #11101d;
+    text-align: center;
+    background-color: transparent;
 
     &:hover {
       color: #fff;
@@ -287,15 +288,23 @@
 }
 .detailcard-wrapper {
   width: 300px;
-  height: 110px;
-  border: 2px solid #11101d;
+  height: 120px;
+  border: 8px double #cdd1de;
+  // border-style: double 2px;
   border-radius: 20px 7px 20px 7px;
-  color: #11101d;
+  color: #e4e9f7;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding: 10px;
   margin: 30px 15px;
+  background-color: #1d1b31;
+  transition: all 0.3s ease-in;
+
+  &:hover {
+    box-shadow: 10px 10px 20px 2px #1d1b31;
+    transform: translateY(-5px) translateX(-5px);
+  }
 
   h4 {
     font-size: 20px;
