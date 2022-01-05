@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 // import "./Navbar.css";
 
 const Navbar = React.memo((props) => {
-  const [userloggedin, setUserloggedin] = useState(false);
+  // const [userloggedin, setUserloggedin] = useState(false);
   const [click, setClick] = useState(false);
-  const [dropdown, setDropdown] = useState(false);
+  // const [dropdown, setDropdown] = useState(false);
   const [fixed, setFixed] = useState(false);
 
   const handleClick = () => setClick(!click);

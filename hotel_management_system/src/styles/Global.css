@@ -365,12 +365,65 @@ body {
   font-weight: 600;
 }
 
+.bookingform-container {
+  display: -ms-flexbox;
+  /* IE10 */
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 16px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.bookingform-container form {
+  width: 100%;
+  max-width: 650px;
+}
+
+.bookingform-container .form-inputs {
+  max-width: 550px;
+  margin: 5px 16px;
+}
+
+.bookingform-container .form-inputs label {
+  color: #11101d;
+}
+
+.bookingform-container .booking-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+}
+
+.bookingform-container .col-lil {
+  width: 220px;
+}
+
+.bookingform-container .form-input-btn {
+  width: 400px;
+  margin: 5px 16px;
+}
+
 @media screen and (max-width: 960px) {
   .form-content-left {
     display: none;
   }
   .form-content-right {
     width: 100%;
+  }
+  .bookingform-container .form-input-btn {
+    width: 190px;
+    padding: 2px;
   }
 }
 
@@ -484,6 +537,10 @@ body {
   width: 100px;
 }
 
+.dashboard-icon:hover {
+  color: #8f0e39;
+}
+
 @media screen and (max-width: 960px) {
   .fas-caret-down {
     display: none;
@@ -578,7 +635,7 @@ body {
     text-decoration: none;
     color: #fff;
   }
-  button {
+  .navbar button {
     display: none;
   }
 }
@@ -884,10 +941,6 @@ body {
 }
 
 .userdashboardpage * {
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
 
@@ -1322,5 +1375,122 @@ footer .footerContainer p {
 footer .footerContainer a {
   outline: none;
   text-decoration: none;
+}
+
+.paymentpage {
+  /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (and change the direction - make the "cart" column go on top) */
+}
+
+.paymentpage .row {
+  display: -ms-flexbox;
+  /* IE10 */
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 16px;
+}
+
+.paymentpage .col-25 {
+  -ms-flex: 25%;
+  /* IE10 */
+  -webkit-box-flex: 25%;
+          flex: 25%;
+}
+
+.paymentpage .col-50 {
+  -ms-flex: 50%;
+  /* IE10 */
+  -webkit-box-flex: 50%;
+          flex: 50%;
+}
+
+.paymentpage .col-75 {
+  -ms-flex: 75%;
+  /* IE10 */
+  -webkit-box-flex: 75%;
+          flex: 75%;
+}
+
+.paymentpage .col-25,
+.paymentpage .col-50,
+.paymentpage .col-75 {
+  padding: 0 16px;
+}
+
+.paymentpage .container {
+  background-color: rgba(255, 255, 255, 0.75);
+  padding: 5px 20px 15px 20px;
+  border: 1px solid #11101d;
+  border-radius: 3px;
+  color: #11101d;
+}
+
+.paymentpage i {
+  font-family: "Font Awesome 5 Free", "Font Awesome 5 Brands";
+}
+
+.paymentpage input[type="text"] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.paymentpage label {
+  color: #11101d;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.paymentpage .icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 28px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 150px;
+}
+
+.paymentpage .btn {
+  background-color: #04aa6d;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.paymentpage .btn:hover {
+  background-color: #45a049;
+}
+
+.paymentpage span.price {
+  float: right;
+  color: grey;
+}
+
+@media (max-width: 800px) {
+  .paymentpage .row {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+  .paymentpage .col-25 {
+    margin-bottom: 20px;
+  }
 }
 /*# sourceMappingURL=global.css.map */

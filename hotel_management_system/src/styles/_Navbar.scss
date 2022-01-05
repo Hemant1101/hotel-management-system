@@ -94,6 +94,10 @@
 .dashboard-icon {
   color: #fff;
   width: 100px;
+
+  &:hover {
+    color: #8f0e39;
+  }
 }
 
 @media screen and (max-width: 960px) {
@@ -188,8 +192,9 @@
     text-decoration: none;
     color: #fff;
   }
-
-  button {
-    display: none;
+  .navbar {
+    button {
+      display: none;
+    }
   }
 }

@@ -10,6 +10,7 @@ const options = {
     softwareBrothers: false,
     logo: "",
   },
+  dashboard: { component: AdminBro.bundle("./ds") },
   locale: {
     translations: {
       messages: {

@@ -8,6 +8,7 @@ import MakeBookings from "./MakeBookings";
 function UserDashboard() {
   let history = useNavigate();
   const [userdata, setuserdata] = useState({});
+  const [bookingdata, setbookingdata] = useState({});
   const [sidebar, setsidebar] = useState(false);
   const [closeBtn, setcloseBtn] = useState(false);
   const [userid, setuserid] = useState("");
@@ -70,34 +71,6 @@ function UserDashboard() {
               </Link>
               <span className="tooltip">Dashboard</span>
             </li>
-            {/* <li>
-              <a href="#">
-                <i className="bx bx-user"></i>
-                <span className="links_name">User</span>
-              </a>
-              <span className="tooltip">User</span>
-            </li>
-            <li>
-              <a href="#">
-                <i className="bx bx-chat"></i>
-                <span className="links_name">Messages</span>
-              </a>
-              <span className="tooltip">Messages</span>
-            </li>
-             <li>
-              <a href="#">
-                <i className="bx bx-pie-chart-alt-2"></i>
-                <span className="links_name">Analytics</span>
-              </a>
-              <span className="tooltip">Analytics</span>
-            </li>
-            <li>
-              <a href="#">
-                <i className="bx bx-folder"></i>
-                <span className="links_name">File Manager</span>
-              </a>
-              <span className="tooltip">Files</span>
-            </li> */}
             <li>
               <Link
                 to="./makebookings"
@@ -111,19 +84,19 @@ function UserDashboard() {
               <span className="tooltip">Bookings</span>
             </li>
             <li>
-              <a href="#">
+              <Link to="/">
                 <i className="bx bx-heart"></i>
-                <span className="links_name">Saved</span>
-              </a>
-              <span className="tooltip">Saved</span>
+                <span className="links_name">Home</span>
+              </Link>
+              <span className="tooltip">Home</span>
             </li>
-            <li>
+            {/*<li>
               <a href="#">
                 <i className="bx bx-cog"></i>
                 <span className="links_name">Setting</span>
               </a>
               <span className="tooltip">Setting</span>
-            </li>
+            </li> */}
             <li className="profile">
               <div className="profile-details">
                 {/* <img src="profile.jpg" alt="profileImg" /> */}
@@ -150,8 +123,19 @@ function UserDashboard() {
           </button>
           <div className="dashboard-canvas">
             <Routes>
-              <Route path="/makepayment" element={<PaymentPage />} />
-              <Route path="/makebookings" element={<MakeBookings />} />
+              <Route
+                path="/makepayment"
+                element={<PaymentPage bookingdetail={bookingdata} />}
+              />
+              <Route
+                path="/makebookings"
+                element={
+                  <MakeBookings
+                    userdetails={userdata}
+                    setbookingdetail={setbookingdata}
+                  />
+                }
+              />
               <Route
                 path="/"
                 element={<UserProfileCard userdetails={userdata} />}

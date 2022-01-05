@@ -4,7 +4,6 @@ import Hero from "../Hero";
 import Navbar from "../Navbar";
 import RoomsContent from "../RoomsContent";
 import AboutUs from "./AboutUs";
-import Login from "./Login";
 
 function Home() {
   const [loggedIn, setLoggedIn] = useState(false);

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 // import "./Form.css";
 import FormSignup from "./FormSignup.jsx";
 import FormSuccess from "./FormSuccess.jsx";
-import Axios from "axios";
 
 const Form = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);

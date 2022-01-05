@@ -6,7 +6,11 @@ const Footer = () => {
       <footer>
         <div className="footerContainer">
           <p>Hotel Management System</p>
-          <a href="http://localhost:5000/admin/login" target="_blank">
+          <a
+            href="http://localhost:5000/admin/login"
+            target="_blank"
+            rel="noreferrer"
+          >
             Admin
           </a>
         </div>
