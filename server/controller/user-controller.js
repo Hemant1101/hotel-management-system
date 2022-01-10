@@ -74,4 +74,29 @@ const getuserdata = async (req, res) => {
   }
 };
 
-module.exports = { register, login, getrooms, getuserdata };
+const getroomdata = async (req, res) => {
+  try {
+    const usid = req.query.searchid;
+    // console.log(req.query.searchid);
+    const roomsdata = await Rooms.findOne({ where: { type: usid } });
+    res.status(200);
+    // console.log(usersdata);
+    return res.status(200).json({ rooms: roomsdata });
+  } catch (error) {
+    return res.status(500).json({ message: "roomsdata not found" });
+  }
+};
+
+const updatetroomdata = async (req, res) => {
+  try {
+    // const usersname=;
+    const roomsdata = await Rooms.findOne({ where: { type: usid } });
+    res.status(200);
+    // console.log(usersdata);
+    return res.status(200).json({ rooms: roomsdata });
+  } catch (error) {
+    return res.status(500).json({ message: "roomsdata not found" });
+  }
+};
+
+module.exports = { register, login, getrooms, getuserdata, getroomdata };

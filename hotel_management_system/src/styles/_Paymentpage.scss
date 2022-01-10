@@ -40,7 +40,8 @@
     font-family: "Font Awesome 5 Free", "Font Awesome 5 Brands";
   }
 
-  input[type="text"] {
+  input[type="text"],
+  input[type="number"] {
     width: 100%;
     margin-bottom: 20px;
     padding: 12px;

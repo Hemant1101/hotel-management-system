@@ -71,10 +71,10 @@ const MakeBookings = (props) => {
                 value={values.type}
               >
                 <option value="">select a room type</option>
-                <option value="Delux">Delux</option>
-                <option value="Standard">Standard</option>
-                <option value="Premium">Premium</option>
-                <option value="Twin bed">Twin bed</option>
+                <option value="delux">Delux</option>
+                <option value="standard">Standard</option>
+                <option value="premeium">Premium</option>
+                <option value="twin bed">Twin bed</option>
               </select>
             </div>
             <div className="form-inputs col-lil">

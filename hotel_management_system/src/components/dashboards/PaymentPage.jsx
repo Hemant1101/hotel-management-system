@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import Axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 
 const PaymentPage = (props) => {
+  let navigate = useNavigate();
   const [values, setValues] = useState({
     username: props.bookingdetail["username"],
-    email: "",
-    password: "",
-    password2: "",
-    number: "",
+    email: props.bookingdetail["email"],
+    type: props.bookingdetail["type"],
+    roomnumber: "",
+    number: props.bookingdetail["phonenumber"],
   });
+  const [roomcount, setroomcount] = useState("");
+  const [price, setprice] = useState("");
   const handleChange = (e) => {
     const { name, value } = e.target;
     setValues({
@@ -15,9 +21,49 @@ const PaymentPage = (props) => {
       [name]: value,
     });
   };
-  // useEffect(() => {
-
-  // }, []);
+  async function getroomdetail() {
+    const searchtype = props.bookingdetail["type"];
+    Axios.get("http://localhost:5000/api/getroomdata", {
+      params: {
+        searchid: searchtype,
+      },
+    }).then((res) => {
+      const result = res.data;
+      console.log(result);
+      setroomcount(result["rooms"]["availrooms"]);
+      setprice(result["rooms"]["price"]);
+    });
+  }
+  function daysDifference() {
+    var dateI1 = props.bookingdetail["checkin"];
+    var dateI2 = props.bookingdetail["checkout"];
+    var date1 = new Date(dateI1);
+    var date2 = new Date(dateI2);
+    var time_difference = date2.getTime() - date1.getTime();
+    var result = time_difference / (1000 * 60 * 60 * 24);
+    return result + 1;
+  }
+  let days = daysDifference();
+  useEffect(() => {
+    getroomdetail();
+  }, []);
+  const handlesubmit = async (e) => {
+    e.preventDefault();
+    await Axios.post("http://localhost:5000/api/updateroomdata", {
+      username: values.usernames,
+      roomtype: values.type,
+      checkin: props.bookingdetail["checkin"],
+      checkout: props.bookingdetail["checkout"],
+      roombooked: values.roomnumber,
+    })
+      .then(() => {
+        swal("Payment Successful!", "Your Room has been booked!", "success");
+        navigate("/userdashboard");
+      })
+      .catch((err) => {
+        swal("Payment Failed!", "Try again!", "error");
+      });
+  };
 
   return (
     <>
@@ -25,20 +71,21 @@ const PaymentPage = (props) => {
         <div className="row">
           <div className="col-75">
             <div className="container">
-              <form>
+              <form onSubmit={handlesubmit}>
                 <div className="row">
                   <div className="col-50">
-                    <h3>Billing Address</h3>
-                    <label for="fname">
+                    <h3>Billing Details</h3>
+                    <label for="username">
                       <i className="fa fa-user"></i> Full Name
                     </label>
                     <input
                       type="text"
                       id="fname"
-                      name="firstname"
+                      name="username"
                       value={values.username}
                       onChange={handleChange}
                       placeholder="John M. Doe"
+                      disabled={true}
                     />
                     <label for="email">
                       <i className="fa fa-envelope"></i> Email
@@ -47,44 +94,55 @@ const PaymentPage = (props) => {
                       type="text"
                       id="email"
                       name="email"
+                      value={values.email}
+                      onChange={handleChange}
                       placeholder="john@example.com"
+                      disabled={true}
                     />
-                    <label for="adr">
-                      <i className="fa fa-address-card"></i> Address
+                    <label for="type">
+                      <i className="fa fa-address-card"></i> Room Type
                     </label>
                     <input
                       type="text"
                       id="adr"
-                      name="address"
-                      placeholder="542 W. 15th Street"
+                      name="type"
+                      value={values.type}
+                      onChange={handleChange}
+                      disabled={true}
                     />
-                    <label for="city">
-                      <i className="fa fa-university"></i> City
+                    <label for="number">
+                      <i className="fa fa-university">Phone Number</i>
                     </label>
                     <input
                       type="text"
                       id="city"
-                      name="city"
-                      placeholder="New York"
+                      name="number"
+                      value={values.number}
+                      onChange={handleChange}
+                      disabled={true}
                     />
 
                     <div className="row">
                       <div className="col-50">
-                        <label for="state">State</label>
+                        <label for="roomcount">No of available rooms</label>
                         <input
                           type="text"
                           id="state"
-                          name="state"
-                          placeholder="NY"
+                          name="roomcount"
+                          value={roomcount}
+                          disabled={true}
                         />
                       </div>
                       <div className="col-50">
-                        <label for="zip">Zip</label>
+                        <label for="roomnumber">No of selected rooms</label>
                         <input
-                          type="text"
+                          type="number"
                           id="zip"
-                          name="zip"
-                          placeholder="10001"
+                          name="roomnumber"
+                          value={values.roomnumber}
+                          onChange={handleChange}
+                          max={roomcount}
+                          min={1}
                         />
                       </div>
                     </div>
@@ -167,20 +225,24 @@ const PaymentPage = (props) => {
           <div className="col-25">
             <div className="container">
               <h4>
-                Cart
+                No of rooms
                 <span className="price" style={{ color: "black" }}>
-                  <i className="fa fa-shopping-cart"></i>
-                  <b>4</b>
+                  {/* <i className="fa fa-shopping-cart"></i> */}
+                  <b>{values.roomnumber}</b>
                 </span>
               </h4>
               <p>
-                <span>Product 1</span> <span className="price">$15</span>
+                <span>Price/day</span> <span className="price">Rs {price}</span>
+              </p>
+              <p>
+                <span>No of days</span>
+                <span className="price">{days}</span>
               </p>
               <hr />
               <p>
                 Total
                 <span className="price" style={{ color: "black" }}>
-                  <b>$30</b>
+                  <b>Rs {values.roomnumber * days * price}</b>
                 </span>
               </p>
             </div>
