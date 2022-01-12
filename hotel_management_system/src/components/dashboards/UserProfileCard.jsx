@@ -13,6 +13,7 @@ const UserdetailsCard = (props) => {
 
 const UserProfileCard = (props) => {
   console.log(props.userdetails);
+
   return (
     <>
       <div className="card-container">
@@ -21,24 +22,40 @@ const UserProfileCard = (props) => {
           value={props.userdetails["phonenumber"]}
         />
         <UserdetailsCard
-          heading="Booked-Rooms"
-          value={props.userdetails["bookedrooms"]}
+          heading="Booked-Rooms Type"
+          value={
+            props.userdetails["bookedrooms"] == null
+              ? props.userdetails["bookedrooms"]
+              : props.userdetails["bookedrooms"]["type"]
+          }
+        />
+        <UserdetailsCard
+          heading="Total Booked-Rooms"
+          value={
+            props.userdetails["bookedrooms"] == null
+              ? props.userdetails["bookedrooms"]
+              : props.userdetails["bookedrooms"]["no_of_rooms"]
+          }
         />
         <UserdetailsCard
           heading="Check-in Time"
-          value={props.userdetails["checkin"]}
+          value={
+            props.userdetails["checkin"] == null
+              ? props.userdetails["checkin"]
+              : props.userdetails["checkin"].slice(0, 10)
+          }
         />
         <UserdetailsCard
           heading="Check-out Time"
-          value={props.userdetails["checkout"]}
+          value={
+            props.userdetails["checkout"] == null
+              ? props.userdetails["checkout"]
+              : props.userdetails["checkout"].slice(0, 10)
+          }
         />
         <UserdetailsCard
           heading="Total Bill"
           value={props.userdetails["totalbill"]}
-        />
-        <UserdetailsCard
-          heading="Unpaid Bill"
-          value={props.userdetails["unpaidbill"]}
         />
         <UserdetailsCard
           heading="Paid Bill"

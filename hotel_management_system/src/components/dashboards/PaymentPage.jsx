@@ -6,6 +6,7 @@ import swal from "sweetalert";
 const PaymentPage = (props) => {
   let navigate = useNavigate();
   const [values, setValues] = useState({
+    userid: props.bookingdetail["userid"],
     username: props.bookingdetail["username"],
     email: props.bookingdetail["email"],
     type: props.bookingdetail["type"],
@@ -50,15 +51,17 @@ const PaymentPage = (props) => {
   const handlesubmit = async (e) => {
     e.preventDefault();
     await Axios.post("http://localhost:5000/api/updateroomdata", {
-      username: values.usernames,
+      id: values.userid,
       roomtype: values.type,
       checkin: props.bookingdetail["checkin"],
       checkout: props.bookingdetail["checkout"],
+      leftrooms: roomcount - values.roomnumber,
       roombooked: values.roomnumber,
+      bill: price,
     })
       .then(() => {
         swal("Payment Successful!", "Your Room has been booked!", "success");
-        navigate("/userdashboard");
+        navigate("/");
       })
       .catch((err) => {
         swal("Payment Failed!", "Try again!", "error");

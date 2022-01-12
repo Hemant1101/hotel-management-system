@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const Rooms = require("../models/Rooms");
+const { bulkBuild } = require("../models/User");
 
 const register = async (req, res) => {
   try {
@@ -87,16 +88,40 @@ const getroomdata = async (req, res) => {
   }
 };
 
-const updatetroomdata = async (req, res) => {
+const updateroomdata = async (req, res) => {
   try {
-    // const usersname=;
-    const roomsdata = await Rooms.findOne({ where: { type: usid } });
-    res.status(200);
+    const usid = req.body.id;
+    const roomtype = req.body.roomtype;
+    const checkin = new Date(req.body.checkin);
+    const checkout = new Date(req.body.checkout);
+    const roombooked = req.body.roombooked;
+    const leftrooms = req.body.leftrooms;
+    const bill = req.body.bill;
+    await User.update(
+      {
+        checkin: checkin,
+        checkout: checkout,
+        bookedrooms: { type: roomtype, no_of_rooms: roombooked },
+        totalbill: bill,
+        paidbill: bill,
+      },
+      { where: { id: usid } }
+    ).then(() => {
+      Rooms.update({ availrooms: leftrooms }, { where: { type: roomtype } });
+    });
     // console.log(usersdata);
-    return res.status(200).json({ rooms: roomsdata });
+    return res.status(200).json({ message: "room booked successfully" });
   } catch (error) {
+    console.log("\n" + error);
     return res.status(500).json({ message: "roomsdata not found" });
   }
 };
 
-module.exports = { register, login, getrooms, getuserdata, getroomdata };
+module.exports = {
+  register,
+  login,
+  getrooms,
+  getuserdata,
+  getroomdata,
+  updateroomdata,
+};
