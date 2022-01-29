@@ -18,6 +18,14 @@ Hotel management project provides room booking and other necessary hotel managem
   * Front End -	NodeJs, React.js, VS Code (Ide)
   * Back End - 	Express.js, Node.js, MySQL
 
+#### How to run the project :
+* open terminal in folder hotel-management-system
+* run command `npm i `  it will install all the required dependencies
+* then run command ` npm run dev ` to start backend server make sure to change database name, username and paasword in conn.js in server/db/conn.js file for mysql
+* then open another terminal in folder /hotel-management-system/hotel_management_system/ and run command ` npm start ` to start react ( frontend )
+*  go to localhost : 3000 to see your web app 
+*  feel free to make your changes and make it your own
+
 - - - -
 ### Landing Page
 ![Landing Page](/assets/landing.png "Landing Page")
