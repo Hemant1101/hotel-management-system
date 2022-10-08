@@ -5,7 +5,7 @@ The project, Online Hotel Management System is a Web-based application that allo
 Hotel management project provides room booking and other necessary hotel management features. The system allows the manager to post available rooms in the system. The daily activities include the Room activities, Entering details of the new customer check in, To allocate a room as per the customer need and interest, Recording the checkout time and details, Releasing or Empty of room and to record the process in a computer system for future.
 
 
-### Reqirement Specification
+### Requirement Specification
 
 ##### Hardware Requirements :
   * Desktop PC or a Laptop
